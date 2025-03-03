@@ -33,3 +33,24 @@ print(classification_report(y_test, y_pred))
 
 scores = cross_val_score(model, X, y, cv=5)
 print(f"Cross-validation accuracy: {scores.mean():.4f} ± {scores.std():.4f}")
+
+# Test sur le passager 3
+passager_3 = X.iloc[2]
+
+print("\n🔍 Informations du passager 3 :\n", passager_3)
+
+passager_3 = passager_3.values.reshape(1, -1)
+
+prediction = model.predict(passager_3)
+
+print("\n🚢 Résultat de la prédiction :")
+if prediction[0] == 1:
+    print("✅ Le passager a SURVÉCU !")
+else:
+    print("❌ Le passager N'A PAS SURVÉCU...")
+
+print("\n🎯 Vraie valeur :")
+if y.iloc[2] == 1:
+    print("✅ Le passager a VRAIMENT survécu.")
+else:
+    print("❌ Le passager N'A PAS survécu.")
